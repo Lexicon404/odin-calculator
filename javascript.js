@@ -67,7 +67,8 @@ equal.addEventListener('click', function (){
         if (currentEntry === Infinity) {
             display.textContent = 'ERROR'
             } else {
-                display.textContent = currentEntry 
+                currentEntry = Math.round(currentEntry*1000)/1000;
+                display.textContent = currentEntry ;
                 operator = '';
                 }
     } else if (operator === '*'){
