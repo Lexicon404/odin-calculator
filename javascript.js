@@ -44,5 +44,20 @@ operators.forEach (function (op) {
         currentEntry = ''
     })
 })
-console.log (operator)
+
 //on click equal button to result
+equal.addEventListener('click', function (){
+    if (operator === '+') {
+    currentEntry = (Number(currentEntry) + Number(lastEntry))
+    display.textContent = currentEntry
+    } else if (operator === '-') {
+        currentEntry = (Number(lastEntry) - Number(currentEntry))
+        display.textContent = currentEntry 
+    } else if (operator === '/') {
+        currentEntry = (Number(lastEntry) / Number(currentEntry))
+        display.textContent = currentEntry 
+    } else if (operator === '*'){
+        currentEntry = (Number(lastEntry) * Number(currentEntry))
+        display.textContent = currentEntry 
+    }
+})
