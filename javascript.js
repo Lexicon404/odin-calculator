@@ -64,8 +64,12 @@ equal.addEventListener('click', function (){
         operator = '';
     } else if (operator === '/') {
         currentEntry = (Number(lastEntry) / Number(currentEntry))
-        display.textContent = currentEntry 
-        operator = '';
+        if (currentEntry === Infinity) {
+            display.textContent = 'ERROR'
+            } else {
+                display.textContent = currentEntry 
+                operator = '';
+                }
     } else if (operator === '*'){
         currentEntry = (Number(lastEntry) * Number(currentEntry))
         display.textContent = currentEntry 
