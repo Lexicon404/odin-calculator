@@ -24,3 +24,25 @@ function displayNumber (num) {
     display.textContent = currentEntry
 }
 }
+
+
+//clear button to clear all values
+clear.addEventListener('click', function () {
+    lastEntry = '';
+    currentEntry = '';
+    operator = '';
+    display.textContent = '';
+})
+
+
+//save operator value and move currentEntry to lastEntry
+operators.forEach (function (op) {
+    op.addEventListener('click', function (e) {
+        operator = e.target.textContent;
+        display.textContent = operator
+        lastEntry = currentEntry
+        currentEntry = ''
+    })
+})
+console.log (operator)
+//on click equal button to result
