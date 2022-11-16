@@ -7,6 +7,7 @@ const buttons = document.querySelectorAll('.buttons');
 const operators = document.querySelectorAll('.operators');
 const equal = document.querySelector ('.equal');
 const clear = document.querySelector ('.clear');
+const back = document.querySelector ('.back');
 
 
 //return value of each number clicked
@@ -70,4 +71,10 @@ equal.addEventListener('click', function (){
         display.textContent = currentEntry 
         operator = '';
     }
+})
+
+//delete button
+back.addEventListener('click', function (){
+    currentEntry = String(currentEntry).slice(0, -1);
+    display.textContent = currentEntry 
 })
