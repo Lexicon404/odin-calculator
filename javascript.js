@@ -38,11 +38,17 @@ clear.addEventListener('click', function () {
 //save operator value and move currentEntry to lastEntry
 operators.forEach (function (op) {
     op.addEventListener('click', function (e) {
-        operator = e.target.textContent;
-        display.textContent = operator
-        lastEntry = currentEntry
-        currentEntry = ''
-    })
+        if (operator === '') {
+            operator = e.target.textContent;
+            display.textContent = operator
+            lastEntry = currentEntry
+            currentEntry = ''
+        } else {
+            operator = e.target.textContent;
+            display.textContent = operator
+        }
+        }
+    )
 })
 
 //on click equal button to result
@@ -50,14 +56,18 @@ equal.addEventListener('click', function (){
     if (operator === '+') {
     currentEntry = (Number(currentEntry) + Number(lastEntry))
     display.textContent = currentEntry
+    operator = '';
     } else if (operator === '-') {
         currentEntry = (Number(lastEntry) - Number(currentEntry))
         display.textContent = currentEntry 
+        operator = '';
     } else if (operator === '/') {
         currentEntry = (Number(lastEntry) / Number(currentEntry))
         display.textContent = currentEntry 
+        operator = '';
     } else if (operator === '*'){
         currentEntry = (Number(lastEntry) * Number(currentEntry))
         display.textContent = currentEntry 
+        operator = '';
     }
 })
