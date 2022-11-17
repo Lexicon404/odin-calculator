@@ -8,6 +8,7 @@ const operators = document.querySelectorAll('.operators');
 const equal = document.querySelector ('.equal');
 const clear = document.querySelector ('.clear');
 const back = document.querySelector ('.back');
+const decimal = document.querySelector ('.decimal')
 
 
 //return value of each number clicked
@@ -26,6 +27,13 @@ function displayNumber (num) {
 }
 }
 
+//append decimal to display when pressed
+decimal.addEventListener('click', function() {
+    if(!currentEntry.includes ('.') ){
+    currentEntry += '.'
+    display.textContent = currentEntry
+    }
+})
 
 //clear button to clear all values
 clear.addEventListener('click', function () {
