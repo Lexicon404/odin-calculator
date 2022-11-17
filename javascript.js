@@ -46,9 +46,13 @@ operators.forEach (function (op) {
             lastEntry = currentEntry
             currentEntry = ''
         } else {
-            calculate();
-            operator = e.target.textContent;
-            display.textContent = currentEntry + operator
+            if (currentEntry !== ''&&lastEntry !=='') {
+                calculate()
+                operator = e.target.textContent;
+                display.textContent = currentEntry + operator
+                lastEntry = currentEntry
+                currentEntry = ''
+            }
 
         }
         }
@@ -62,15 +66,15 @@ equal.addEventListener('click', calculate)
 //calculate function
 function calculate() {
     if (operator === '+'&&currentEntry !=='' &&lastEntry !== '') {
-    currentEntry = (Number(currentEntry) + Number(lastEntry))
+    currentEntry = ((Number(currentEntry)*1000 + Number(lastEntry)*1000)/1000)
     display.textContent = currentEntry
     operator = '';
     } else if (operator === '-'&&currentEntry !=='' &&lastEntry !== '') {
-        currentEntry = (Number(lastEntry) - Number(currentEntry))
+        currentEntry = ((Number(lastEntry)*1000 - Number(currentEntry)*1000)/1000)
         display.textContent = currentEntry 
         operator = '';
     } else if (operator === '/'&&currentEntry !=='' &&lastEntry !== '') {
-        currentEntry = (Number(lastEntry) / Number(currentEntry))
+        currentEntry = ((Number(lastEntry) / Number(currentEntry)))
         if (currentEntry === Infinity) {
             display.textContent = 'ERROR'
             } else {
@@ -79,7 +83,7 @@ function calculate() {
                 operator = '';
                 }
     } else if (operator === '*'&&currentEntry !=='' &&lastEntry !== ''){
-        currentEntry = (Number(lastEntry) * Number(currentEntry))
+        currentEntry = ((Number(lastEntry) * Number(currentEntry)))
         display.textContent = currentEntry 
         operator = '';
     }
