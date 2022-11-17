@@ -42,15 +42,14 @@ operators.forEach (function (op) {
     
         if (operator === '') {
             operator = e.target.textContent;
-            display.textContent = operator
+            display.textContent = currentEntry + operator
             lastEntry = currentEntry
             currentEntry = ''
         } else {
             calculate();
             operator = e.target.textContent;
             display.textContent = currentEntry + operator
-            lastEntry = currentEntry
-            currentEntry = ''
+
         }
         }
     )
@@ -62,15 +61,15 @@ equal.addEventListener('click', calculate)
 
 //calculate function
 function calculate() {
-    if (operator === '+') {
+    if (operator === '+'&&currentEntry !=='' &&lastEntry !== '') {
     currentEntry = (Number(currentEntry) + Number(lastEntry))
     display.textContent = currentEntry
     operator = '';
-    } else if (operator === '-') {
+    } else if (operator === '-'&&currentEntry !=='' &&lastEntry !== '') {
         currentEntry = (Number(lastEntry) - Number(currentEntry))
         display.textContent = currentEntry 
         operator = '';
-    } else if (operator === '/') {
+    } else if (operator === '/'&&currentEntry !=='' &&lastEntry !== '') {
         currentEntry = (Number(lastEntry) / Number(currentEntry))
         if (currentEntry === Infinity) {
             display.textContent = 'ERROR'
@@ -79,7 +78,7 @@ function calculate() {
                 display.textContent = currentEntry ;
                 operator = '';
                 }
-    } else if (operator === '*'){
+    } else if (operator === '*'&&currentEntry !=='' &&lastEntry !== ''){
         currentEntry = (Number(lastEntry) * Number(currentEntry))
         display.textContent = currentEntry 
         operator = '';
