@@ -39,21 +39,29 @@ clear.addEventListener('click', function () {
 //save operator value and move currentEntry to lastEntry
 operators.forEach (function (op) {
     op.addEventListener('click', function (e) {
+    
         if (operator === '') {
             operator = e.target.textContent;
             display.textContent = operator
             lastEntry = currentEntry
             currentEntry = ''
         } else {
+            calculate();
             operator = e.target.textContent;
-            display.textContent = operator
+            display.textContent = currentEntry + operator
+            lastEntry = currentEntry
+            currentEntry = ''
         }
         }
     )
 })
 
 //on click equal button to result
-equal.addEventListener('click', function (){
+equal.addEventListener('click', calculate)
+
+
+//calculate function
+function calculate() {
     if (operator === '+') {
     currentEntry = (Number(currentEntry) + Number(lastEntry))
     display.textContent = currentEntry
@@ -76,10 +84,13 @@ equal.addEventListener('click', function (){
         display.textContent = currentEntry 
         operator = '';
     }
-})
+}
+
+
 
 //delete button
 back.addEventListener('click', function (){
     currentEntry = String(currentEntry).slice(0, -1);
     display.textContent = currentEntry 
 })
+
