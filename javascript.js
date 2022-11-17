@@ -60,6 +60,9 @@ operators.forEach (function (op) {
                 display.textContent = currentEntry + operator
                 lastEntry = currentEntry
                 currentEntry = ''
+            } else {
+                operator = e.target.textContent;
+                display.textContent = currentEntry + operator
             }
 
         }
